@@ -9,7 +9,8 @@ PRODUCT_PACKAGES += \
      LLuviaStorm \
      WeatherClient \
      MaterialFXPrebuilt \
-     AmbientPlayHistoryProvider
+     AmbientPlayHistoryProvider \
+     Updater
 
 # QS tile styles
 PRODUCT_PACKAGES += \
