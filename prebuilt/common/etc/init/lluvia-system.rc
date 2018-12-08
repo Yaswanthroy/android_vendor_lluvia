@@ -6,6 +6,10 @@ on init
 on post-fs-data
     mkdir /cache/recovery 0770 system cache
 
+    # Create an additional OTA package directory that unlike /data/ota_package
+    # will not be touched by GmsCore.
+    mkdir /data/lluviaos_updates 0770 system cache
+
     # Run sysinit
     start sysinit
 
