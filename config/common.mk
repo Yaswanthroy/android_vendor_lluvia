@@ -10,9 +10,21 @@ PRODUCT_GENERIC_PROPERTIES += \
 endif
 
 ifeq ($(LLUVIA_BUILD_TYPE), OFFICIAL)
-LLUVIA_BUILD_TYPE := NatureMade
-PRODUCT_GENERIC_PROPERTIES += \
-    ro.lluvia.buildtype=NatureMade
+    LIST = $(shell curl -s https://raw.githubusercontent.com/LLuviaOS/android_vendor_lluvia/3.0/lluvia.devices)
+    FOUND_DEVICE =  $(filter $(CURRENT_DEVICE), $(LIST))
+    ifeq ($(FOUND_DEVICE),$(CURRENT_DEVICE))
+	LLUVIA_BUILD_TYPE := NatureMade
+	PRODUCT_GENERIC_PROPERTIES += \
+    		ro.lluvia.buildtype=NatureMade
+
+PRODUCT_PACKAGES += \
+    Updater
+
+    endif
+    ifneq ($(LLUVIA_BUILD_TYPE), NatureMade)
+	LLUVIA_BUILD_TYPE := ManMade
+        $(error Device is not official "$(FOUND)")
+    endif
 endif
 
 LLUVIA_MOD_VERSION := Crystal
