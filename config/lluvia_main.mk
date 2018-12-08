@@ -16,7 +16,8 @@ PRODUCT_PACKAGES += \
     QStilesSquare \
     QStilesRoundedSquare \
     QStilesSquircle \
-    QStilesTearDrop
+    QStilesTearDrop \
+    QStilesDroplet
 
 # FontEngine
 PRODUCT_PACKAGES += \
