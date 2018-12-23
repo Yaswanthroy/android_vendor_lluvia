@@ -210,6 +210,10 @@ PRODUCT_PACKAGES += \
     procmem \
     procrank
 
+# Substratum Key
+PRODUCT_PACKAGES += \
+    vendor/lluvia/prebuilt/common/apk/SubstratumKey.apk:system/priv-app/SubstratumKey/SubstratumKey.apk
+
 # Conditionally build in su
 ifeq ($(WITH_SU),true)
 PRODUCT_PACKAGES += \
