@@ -29,3 +29,7 @@ PRODUCT_PACKAGES += \
     YellowAccent \
     WhiteAccent
 
+# Fonts
+#PRODUCT_PACKAGES += \
+#    CustomFonts
+

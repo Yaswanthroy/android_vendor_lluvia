@@ -19,10 +19,6 @@ PRODUCT_PACKAGES += \
     QStilesTearDrop \
     QStilesDroplet
 
-# FontEngine
-PRODUCT_PACKAGES += \
-    FontEngine
-
 # Markup libs
 ifeq ($(TARGET_ARCH),arm64)
 PRODUCT_COPY_FILES += \
