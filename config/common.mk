@@ -1,6 +1,6 @@
 PRODUCT_BRAND ?= LLuvia
 
-LLUVIA_VERSION_NUMBER := Beta-v2.0
+LLUVIA_VERSION_NUMBER := v3.0
 
 ifndef LLUVIA_BUILD_TYPE
 LLUVIA_BUILD_TYPE := ManMade
@@ -116,25 +116,8 @@ include vendor/lluvia/config/twrp.mk
 endif
 
 # Bootanimation
-ifeq ($(TARGET_BOOT_ANIMATION_RES),360)
-     PRODUCT_COPY_FILES += vendor/lluvia/media/360.zip:system/media/bootanimation.zip
-else ifeq ($(TARGET_BOOT_ANIMATION_RES),720)
-     PRODUCT_COPY_FILES += vendor/lluvia/media/720.zip:system/media/bootanimation.zip
-else ifeq ($(TARGET_BOOT_ANIMATION_RES),1080)
-     PRODUCT_COPY_FILES += vendor/lluvia/media/1080.zip:system/media/bootanimation.zip
-else ifeq ($(TARGET_BOOT_ANIMATION_RES),1280)
-     PRODUCT_COPY_FILES += vendor/lluvia/media/1280.zip:system/media/bootanimation.zip
-else ifeq ($(TARGET_BOOT_ANIMATION_RES),1440)
-     PRODUCT_COPY_FILES += vendor/lluvia/media/1440.zip:system/media/bootanimation.zip
-else ifeq ($(TARGET_BOOT_ANIMATION_RES),1600)
-     PRODUCT_COPY_FILES += vendor/lluvia/media/1600.zip:system/media/bootanimation.zip
-else ifeq ($(TARGET_BOOT_ANIMATION_RES),2160)
-     PRODUCT_COPY_FILES += vendor/lluvia/media/2160.zip:system/media/bootanimation.zip
-else ifeq ($(TARGET_BOOT_ANIMATION_RES),2340)
-     PRODUCT_COPY_FILES += vendor/lluvia/media/2340.zip:system/media/bootanimation.zip
-else
-    $(error "Bootanimation: TARGET_BOOT_ANIMATION_RES is undefined")
-endif
+PRODUCT_COPY_FILES += \
+    vendor/lluvia/media/bootanimation.zip:system/media/bootanimation.zip
 
 # Fix Google dialer
 PRODUCT_COPY_FILES += \
@@ -209,6 +192,10 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_PACKAGES += \
     procmem \
     procrank
+
+# Substratum Key
+PRODUCT_PACKAGES += \
+    vendor/lluvia/prebuilt/common/apk/SubstratumKey.apk:system/priv-app/SubstratumKey/SubstratumKey.apk
 
 # Conditionally build in su
 ifeq ($(WITH_SU),true)
